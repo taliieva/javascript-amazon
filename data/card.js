@@ -46,3 +46,11 @@ export  function addToCard(productId){
     card = newCard;
     saveToStorage();
   }
+  export function calculateCardQuantity(){
+    let cardQuantity = 0;
+
+    card.forEach((cardItem)=>{
+        cardQuantity += cardItem.quantity;
+    });
+    return cardQuantity;
+  }

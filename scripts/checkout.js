@@ -1,4 +1,4 @@
-import { card, removeFromCard } from "../data/card.js";
+import { card, removeFromCard, calculateCardQuantity } from "../data/card.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 let cardSummaryHTML = ''
@@ -101,5 +101,13 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
 
         const container = document.querySelector(`.js-card-item-container-${productId}`);
         container.remove();
+        updateCardQuantity();
     })
+
+function updateCardQuantity(){
+    const cardQuantity = calculateCardQuantity();
+    document.querySelector('.js-return-to-home-link').innerHTML = `${cardQuantity} items`
+}
+    updateCardQuantity();
+
 })

@@ -1,4 +1,4 @@
-import { card, addToCard } from "../data/card.js";
+import { card, addToCard, calculateCardQuantity } from "../data/card.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 let productsHTML = '';
@@ -62,13 +62,11 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 function updateCardQuantity(){
-  let cardQuantity = 0;
-  card.forEach((cardItem)=>{
-      cardQuantity += cardItem.quantity;
-  });
+  const cardQuantity = calculateCardQuantity();
   document.querySelector('.js-card-quantity').innerHTML = cardQuantity;
 
 }
+updateCardQuantity();
 
 const addedMessageTimeouts = {};
 
