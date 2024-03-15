@@ -54,3 +54,14 @@ export  function addToCard(productId){
     });
     return cardQuantity;
   }
+
+  export function updateQuantity(productId, newQuantity){
+    let matchingItem;
+    card.forEach((cardItem)=>{
+        if(productId === cardItem.productId){
+            matchingItem = cardItem;
+        }
+    });
+    matchingItem.quantity = newQuantity;
+    saveToStorage();
+  }
